@@ -12,4 +12,5 @@ The goal of **TracklistHero** is to be a web extension that displays the trackli
 - [ ] Begin inital set-up of API with Flask
 
 # Acknowledgements
+- [1001Tracklists](https://www.1001tracklists.com/)
 - [Web Scraping with Python - Beautiful Soup Crash Course](https://www.youtube.com/watch?v=XVv6mJpFOb0)
