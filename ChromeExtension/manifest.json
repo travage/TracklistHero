@@ -1,0 +1,8 @@
+{
+  "manifest_version": 3,
+  "name": "TracklistHero",
+  "version": "0.0.5",
+  "action": {
+    "default_popup": "search_page.html"
+  }
+}
