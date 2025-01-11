@@ -6,6 +6,7 @@ The goal of **TracklistHero** is to be a web extension that displays the trackli
 # Built With
 - Beautiful Soup
 - Flask
+- HTML/CSS/JavaScript
 
 # Roadmap
 - [x] Build inital web-scraper with Beautiful Soup
@@ -15,3 +16,4 @@ The goal of **TracklistHero** is to be a web extension that displays the trackli
 # Acknowledgements
 - [1001Tracklists](https://www.1001tracklists.com/)
 - [Web Scraping with Python - Beautiful Soup Crash Course](https://www.youtube.com/watch?v=XVv6mJpFOb0)
+- [REST APIs with Flask and Python in 2024](https://www.udemy.com/course/rest-api-flask-and-python/)
