@@ -1,4 +1,23 @@
-body {
-    height: 600px;
+.main-search-page {
+    height: 200px;
     width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title1 {
+    margin-bottom: 40px;
+}
+
+.form-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#search-bar {
+    margin-bottom: 15px;
 }
