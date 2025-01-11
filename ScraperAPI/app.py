@@ -10,7 +10,6 @@ headers = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
 }
 
-# Function should eventually return JSON doc with search results
 @app.post('/search')    # http://127.0.0.1:5000/search
 def search():
     # Extracts search terms from form data
@@ -25,13 +24,16 @@ def search():
     soup = BeautifulSoup(html_response, 'lxml')
 
     search_results = {}
-    result_num = 1
+    # TODO: Implement the result_num again because using the title as a key is returning the results in a weird order
+    # result_num = 1
     # Grab all rows of the results page
     search_row = soup.find_all('div', class_='bItm action oItm')
     for row in search_row:
         title = row.select_one('.bTitle').text.strip()
-        search_results[result_num] = title
-        result_num += 1
+        link = row.find('a').get('href')
+        search_results[title] = link
+        # result_num += 1
 
+    # Flask will send dicts as JSON docs
     return search_results
 
