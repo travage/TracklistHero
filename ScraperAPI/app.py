@@ -24,16 +24,28 @@ def search():
     soup = BeautifulSoup(html_response, 'lxml')
 
     search_results = {}
-    # TODO: Implement the result_num again because using the title as a key is returning the results in a weird order
-    # result_num = 1
+    result_num = 1
     # Grab all rows of the results page
     search_row = soup.find_all('div', class_='bItm action oItm')
+    # Fill the dict with all the results
     for row in search_row:
         title = row.select_one('.bTitle').text.strip()
         link = row.find('a').get('href')
-        search_results[title] = link
-        # result_num += 1
+        search_results[result_num] = [title, link]
+        result_num += 1
 
     # Flask will send dicts as JSON docs
     return search_results
+
+@app.post('/tracklist')    # http://127.0.0.1:5000/tracklist
+def get_tracklist():
+    tracklist_url = request.form.get('url')
+    tracklist_html = requests.get(tracklist_url, headers=headers).text
+    soup = BeautifulSoup(tracklist_html, 'lxml')
+
+    # Test
+    # return tracklist_html
+
+    # Grab each row of the tracklist
+    tracklist_row = soup.find_all('div', class_='tlpTog')
 
