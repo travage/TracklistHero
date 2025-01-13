@@ -43,9 +43,39 @@ def get_tracklist():
     tracklist_html = requests.get(tracklist_url, headers=headers).text
     soup = BeautifulSoup(tracklist_html, 'lxml')
 
-    # Test
-    # return tracklist_html
-
     # Grab each row of the tracklist
     tracklist_row = soup.find_all('div', class_='tlpTog')
+    # Keeps track of the row number
+    counter = 1
+    tracklist = {}
+    for row in tracklist_row:
+        # Some rows will not have HTML elements with the specified HTML classes,
+        # in which case bs4 sets the variable to None.
+        # Since the text is being extracted from the HTML element, an exception
+        # will occur if the variable is None.
+        try:
+            track_position = row.select_one('.fontXL').text.strip()
+        except:
+            track_position = '-'  # No track_position means the track is part of the mashup above it
 
+        try:
+            timestamp = row.select_one('.cue.noWrap.action.mt5').text.strip()  # Sometimes the tag is there but has no text, so timestamp = ''
+        except:
+            timestamp = 'NA'
+
+        try:
+            track = row.select_one('.trackValue').text.strip()
+        except:
+            track = 'NA'
+
+        # Captures version (edit) of the song (e.g. acapella, intro edit, etc.)
+        try:
+            edit_data = row.select_one('.trackEditData').text.strip()
+        except:
+            edit_data = 'NA'
+
+        tracklist[counter] = [track_position, timestamp, track, edit_data]
+        counter += 1
+
+    # Flask send dicts as JSON docs
+    return tracklist
