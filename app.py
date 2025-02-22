@@ -90,6 +90,7 @@ def create_app():
 
     return app
 
+# This originally belonged under if __name__ section, but due to a bug with Gunicorn, it needed to be instantiated outside of it
 my_app = create_app()
 
 if __name__ == "__main__":
