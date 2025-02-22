@@ -16,5 +16,5 @@ RUN pip install --no-cache-dir --upgrade -r requirements.txt
 COPY . .
 
 # Run the application with Gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:$PORT", "my_app:create_app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:$PORT", "app:my_app"]
 
