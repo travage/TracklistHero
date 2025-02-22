@@ -7,6 +7,7 @@ The goal of **TracklistHero** is to be a web extension that displays the trackli
 - Beautiful Soup
 - Flask
 - Insomnia by Kong
+- Docker
 
 # Roadmap
 - [x] Build inital web-scraper with Beautiful Soup
